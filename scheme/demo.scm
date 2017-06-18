@@ -119,3 +119,13 @@
 )
 
 (display (list-remove  (list  1  2 3 4 1 5 1) 1))
+
+(define (list-find ls x i)(
+                if (null? ls) #f (
+                    let ((cur  (if (null? i) 0 i)))
+                    (if (= (car ls) x) cur (list-find (cdr ls) x (+ 1 cur)))
+                )
+        )
+)
+
+(display (list-find  (list 1 2 3 4 5) 3  0))
