@@ -36,6 +36,10 @@ def listFun():
     #pop删除最后一个元素并返回
     print lst.pop() 
 
+    #tuple和list可以通过内置函数tuple, list相互转化
+    tuple([1,2,3])
+    list((1,2,3))
+
 def tupleFun():
     t = (1,2,3,4)
 
@@ -43,11 +47,13 @@ def tupleFun():
     #t.index(1) #抛异常
     print 1 in t, -1 in t
 
+    #多变量赋值 
+    (MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY) = range(7)
+
 def boolFun():
     #0,空串"", 空list[],空tuple(),空dict{} 都为false
     for var in [0, "", [], (), {}]:
         print "%s is %s"%(var, "True" if var else "False") 
-
 
 
 if __name__ == "__main__":
