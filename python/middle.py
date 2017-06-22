@@ -164,7 +164,82 @@ def slotFun():
     c.name = "Joo"
     c.sex = "M" #err
 
+"""
+Collection
+defaultdict 
+    不需要检查是否包含有key
+OrderedDict
+    保持原有插入keys的顺序，每次查入新元素时，在末尾添加
+deque
+    双端队列
+"""
+def collectionFun():
+    #defaultdict
+    #不需要检查key是否存在，类似c++里的map
+    import collections
+    defdict = collections.defaultdict(list)
+    defdict["a"].append(1)
+    print defdict
+
+    tree = lambda : collections.defaultdict(tree)
+    defdict = tree()
+    defdict["abc"]["xyz"] = 100
+    import json
+    print json.dumps(defdict)
+
+    #OrderedDict
+    #保持原有插入keys的顺序，每次查入新元素时，在末尾添加
+    ordered = collections.OrderedDict([("Red", 20), ("Green", 40), ("Yellow", 60)])
+    for k, v in ordered.items():
+        print (k, v)
+
+"""
+enumerate
+    允许loop over加上技术
+"""
+def enumerateFun():
+    for i, v in enumerate(["a","b","c"]):
+        print (i, v)
         
+"""
+locals() 
+    局部变量
+"""
+def qckconsFun():
+    class C(object):
+        def __init__(self, a, b, c, d):
+            self.__dict__.update({ k : v for k, v in locals().items() if k != 'self' })
+
+    c = C(10, 11, 12, 13)
+    print c.a, c.b, c.c, c.d
+
+"""
+For-Else
+    for循环不是由break退出时，才会执行else
+"""
+def forElseFun():
+    print 'test1:'
+    for i in range(5):
+        pass 
+    else:
+        print 'outloop normal'
+
+    print 'test2'
+    for i in range(5):
+        if i == 3:
+            break
+    else:
+        print 'outloop normal'
+
+"""
+Coroutines
+    coroutine和generator类似，但有个不同的地方
+    generator 是 data producer 
+    coroutine 是 data consumer
+"""
+def coroutineFun():
+    pass
+
 if __name__ == "__main__":
     for cmd in sys.argv[1:]:
         function = None
